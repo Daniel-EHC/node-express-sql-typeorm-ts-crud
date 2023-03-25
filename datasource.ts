@@ -1,19 +1,22 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Heroe } from "./src/models/heroe.entity";
+import { Villan } from "./src/models/villan.entity";
 
 export const AppDataSource = new DataSource({
     type: "mssql",
     host: "localhost",
     port: 1433,
-    username: "sa",
+    username: "SA",
     password: "Sa123456",
-    database: "backendalterna",
-    entities: [Heroe],
-    synchronize: false,
-    logging: false,
-    //options: { encrypt: false },
-});
+    database: "backednalterna",
+    entities: [Heroe,Villan],
+    //synchronize: true,
+    logging: true,
+    options: {
+        encrypt: false,
+    },
+})
 
 AppDataSource.initialize()
     .then(() => {
